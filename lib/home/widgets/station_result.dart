@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_train_app/stationList/station_list_page.dart';
 
 class StationResult extends StatefulWidget {

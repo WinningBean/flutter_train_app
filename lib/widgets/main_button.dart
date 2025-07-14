@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class MainButton extends StatelessWidget {
-  MainButton(this.text, {super.key});
+  MainButton(this.text, this.onChanged, {super.key});
 
   String text;
+  void Function() onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +12,9 @@ class MainButton extends StatelessWidget {
       width: double.infinity,
       height: 50,
       child: FilledButton(
-        onPressed: () {},
+        onPressed: () {
+          onChanged();
+        },
         style: FilledButton.styleFrom(
           backgroundColor: Colors.purple,
           shape: RoundedRectangleBorder(
