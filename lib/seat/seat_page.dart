@@ -5,7 +5,10 @@ import 'package:flutter_train_app/seat/widgets/seat_list_view.dart';
 import 'package:flutter_train_app/widgets/main_button.dart';
 
 class SeatPage extends StatelessWidget {
-  const SeatPage({super.key});
+  const SeatPage(this.departureStation, this.arrivalStation, {super.key});
+
+  final String departureStation;
+  final String arrivalStation;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +18,7 @@ class SeatPage extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            SeatHeader(),
+            SeatHeader(departureStation, arrivalStation),
             SizedBox(height: 20),
             SeatChoiceInfo(),
             SizedBox(height: 8),

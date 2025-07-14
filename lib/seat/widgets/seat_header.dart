@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 
 class SeatHeader extends StatelessWidget {
-  const SeatHeader({super.key});
+  const SeatHeader(this.departureStation, this.arrivalStation, {super.key});
+
+  final String departureStation;
+  final String arrivalStation;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Expanded(child: Center(child: headerStation('test'))),
+        Expanded(child: Center(child: headerStation(departureStation))),
         Icon(Icons.arrow_circle_right_outlined, size: 30),
-        Expanded(child: Center(child: headerStation('test'))),
+        Expanded(child: Center(child: headerStation(arrivalStation))),
       ],
     );
   }

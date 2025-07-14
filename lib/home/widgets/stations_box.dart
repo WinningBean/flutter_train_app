@@ -2,7 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_train_app/home/widgets/station_result.dart';
 
 class StationsBox extends StatelessWidget {
-  const StationsBox({super.key});
+  const StationsBox({
+    super.key,
+    required this.onDepartureChanged,
+    required this.onArrivalChanged,
+  });
+
+  final ValueChanged<String?> onDepartureChanged;
+  final ValueChanged<String?> onArrivalChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -16,13 +23,19 @@ class StationsBox extends StatelessWidget {
         child: IntrinsicHeight(
           child: Row(
             children: [
-              Expanded(child: StationResult(true, null)),
+              StationResult(
+                isDepartureStation: true,
+                onChanged: onDepartureChanged,
+              ),
               SizedBox(
                 width: 2,
                 height: 50,
                 child: VerticalDivider(thickness: 2, color: Colors.grey[400]),
               ),
-              Expanded(child: StationResult(false, null)),
+              StationResult(
+                isDepartureStation: false,
+                onChanged: onArrivalChanged,
+              ),
             ],
           ),
         ),
