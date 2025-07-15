@@ -43,29 +43,7 @@ class _SeatPageState extends State<SeatPage> {
                 showCupertinoDialog(
                   context: context,
                   builder: (context) {
-                    return CupertinoAlertDialog(
-                      title: Text('예매 하시겠습니까?'),
-                      content: Text('예약 좌석'),
-                      actions: [
-                        CupertinoDialogAction(
-                          isDestructiveAction: true,
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                          child: Text('취소'),
-                        ),
-                        CupertinoDialogAction(
-                          isDefaultAction: true,
-                          onPressed: () {
-                            Navigator.of(context).pushAndRemoveUntil(
-                              MaterialPageRoute(builder: (_) => HomePage()),
-                              (route) => false,
-                            );
-                          },
-                          child: Text('확인'),
-                        ),
-                      ],
-                    );
+                    return _reservationDialog(context);
                   },
                 );
               }
@@ -74,6 +52,32 @@ class _SeatPageState extends State<SeatPage> {
           ],
         ),
       ),
+    );
+  }
+
+  Widget _reservationDialog(BuildContext context) {
+    return CupertinoAlertDialog(
+      title: Text('예매 하시겠습니까?'),
+      content: Text('좌석: ${_selectedSeats.first.toString()}'),
+      actions: [
+        CupertinoDialogAction(
+          isDestructiveAction: true,
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: Text('취소'),
+        ),
+        CupertinoDialogAction(
+          isDefaultAction: true,
+          onPressed: () {
+            Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (_) => HomePage()),
+              (route) => false,
+            );
+          },
+          child: Text('확인'),
+        ),
+      ],
     );
   }
 

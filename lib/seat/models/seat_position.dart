@@ -4,6 +4,9 @@ class SeatPosition {
   final int row;
   final int col;
 
+  static final String seatRowStartAlphabet = 'A';
+  static final int seatColStartNum = 1;
+
   @override
   bool operator ==(Object other) =>
       other is SeatPosition &&
@@ -13,4 +16,9 @@ class SeatPosition {
 
   @override
   int get hashCode => row.hashCode ^ col.hashCode;
+
+  @override
+  String toString() {
+    return '${seatColStartNum + col}-${String.fromCharCode(seatRowStartAlphabet.codeUnitAt(0) + row)}';
+  }
 }

@@ -14,8 +14,6 @@ class SeatColList extends StatelessWidget {
     required this.onSeatTap,
   });
 
-  static final String _seatRowAlphabet = 'A';
-
   final int rowIdx;
   final double seatSize;
   final int seatColumnSize;
@@ -55,7 +53,9 @@ class SeatColList extends StatelessWidget {
   /// 가로행 정보 (알파벳)
   Widget _seatRowInfo(int rowIdx) {
     return Text(
-      String.fromCharCode(SeatColList._seatRowAlphabet.codeUnitAt(0) + rowIdx),
+      String.fromCharCode(
+        SeatPosition.seatRowStartAlphabet.codeUnitAt(0) + rowIdx,
+      ),
       style: TextStyle(fontSize: 18),
     );
   }
