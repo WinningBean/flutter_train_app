@@ -13,7 +13,7 @@ class SeatSelectInfo extends StatelessWidget {
       children: [
         Row(
           children: [
-            SeatBox(size: _seatSize, color: Colors.purple),
+            SeatBox(size: _seatSize, color: Theme.of(context).highlightColor),
             SizedBox(width: 4),
             Text('선택됨'),
           ],
@@ -21,7 +21,7 @@ class SeatSelectInfo extends StatelessWidget {
         SizedBox(width: 20),
         Row(
           children: [
-            SeatBox(size: _seatSize, color: Colors.grey[300]!),
+            SeatBox(size: _seatSize, color: Theme.of(context).disabledColor),
             SizedBox(width: 4),
             Text('선택 안 됨'),
           ],

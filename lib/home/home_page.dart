@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_train_app/constants/station.dart';
 import 'package:flutter_train_app/seat/seat_page.dart';
+import 'package:flutter_train_app/theme.dart';
 import 'package:flutter_train_app/widgets/main_button.dart';
 import 'package:flutter_train_app/home/widgets/stations_box.dart';
 
@@ -17,10 +18,11 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final customColors = Theme.of(context).extension<CustomColors>()!;
+
     return Scaffold(
       appBar: AppBar(title: Text('기차 예매')),
-      backgroundColor: Colors.grey[200],
-
+      backgroundColor: customColors.homePageBackgroundColor,
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(

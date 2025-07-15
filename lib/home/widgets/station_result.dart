@@ -33,19 +33,12 @@ class _StationResultState extends State<StationResult> {
     return Expanded(
       child: Column(
         children: [
-          Text(
-            _stationRoute,
-            style: TextStyle(
-              fontSize: 16,
-              color: Colors.grey,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+          Text(_stationRoute, style: Theme.of(context).textTheme.labelMedium),
           GestureDetector(
             onTap: _selectStation,
             child: Text(
               _station?.korean ?? '선택',
-              style: TextStyle(fontSize: 40),
+              style: Theme.of(context).textTheme.displayLarge,
             ),
           ),
         ],

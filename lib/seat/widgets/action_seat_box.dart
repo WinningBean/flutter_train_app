@@ -17,8 +17,8 @@ class ActionSeatBox extends SeatBox {
   final void Function(SeatPosition) onChanged;
 
   @override
-  Color get boxColor {
-    return isSelected ? Colors.purple : color;
+  Color getBoxColor(BuildContext context) {
+    return isSelected ? Theme.of(context).highlightColor : color;
   }
 
   @override

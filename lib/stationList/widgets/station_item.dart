@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_train_app/constants/station.dart';
+import 'package:flutter_train_app/theme.dart';
 
 class StationItem extends StatelessWidget {
   const StationItem({super.key, required this.station, this.canTap = true});
@@ -28,20 +29,22 @@ class StationBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final customColors = Theme.of(context).extension<CustomColors>()!;
+
     return Container(
       height: 50,
       alignment: Alignment.centerLeft,
       padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
       decoration: BoxDecoration(
-        color: canTap ? null : Colors.grey[200],
-        border: Border(bottom: BorderSide(color: Colors.grey[300]!)),
+        color: canTap ? null : Theme.of(context).disabledColor,
+        border: Border(
+          bottom: BorderSide(color: Theme.of(context).colorScheme.outline),
+        ),
       ),
       child: Text(
         station.korean,
-        style: TextStyle(
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
-          color: canTap ? null : Colors.grey[400],
+        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+          color: canTap ? null : customColors.disabledTextColor,
         ),
       ),
     );

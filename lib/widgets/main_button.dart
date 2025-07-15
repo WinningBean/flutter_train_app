@@ -15,20 +15,7 @@ class MainButton extends StatelessWidget {
         onPressed: () {
           onChanged();
         },
-        style: FilledButton.styleFrom(
-          backgroundColor: Colors.purple,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-          ),
-        ),
-        child: Text(
-          text,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 18,
-            color: Colors.white,
-          ),
-        ),
+        child: Text(text),
       ),
     );
   }

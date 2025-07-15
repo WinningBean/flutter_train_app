@@ -26,22 +26,22 @@ class SeatColList extends StatelessWidget {
     return Column(
       children: [
         ...columnSpaced([
-          _seatRowInfo(rowIdx),
-          ..._seatBoxs(rowIdx),
+          _seatRowInfo(context, rowIdx),
+          ..._seatBoxs(context, rowIdx),
         ], columnPadding),
       ],
     );
   }
 
   /// 좌석 박스
-  List<Widget> _seatBoxs(int rowIdx) {
+  List<Widget> _seatBoxs(BuildContext context, int rowIdx) {
     return [
       for (int colIdx = 0; colIdx < seatColumnSize; colIdx++)
         () {
           final SeatPosition seatPosition = SeatPosition(rowIdx, colIdx);
           return ActionSeatBox(
             size: seatSize,
-            color: Colors.grey[300]!,
+            color: Theme.of(context).disabledColor,
             seatPosition: seatPosition,
             isSelected: isSeatSeleted(seatPosition),
             onChanged: onSeatTap,
@@ -51,12 +51,12 @@ class SeatColList extends StatelessWidget {
   }
 
   /// 가로행 정보 (알파벳)
-  Widget _seatRowInfo(int rowIdx) {
+  Widget _seatRowInfo(BuildContext context, int rowIdx) {
     return Text(
       String.fromCharCode(
         SeatPosition.seatRowStartAlphabet.codeUnitAt(0) + rowIdx,
       ),
-      style: TextStyle(fontSize: 18),
+      style: Theme.of(context).textTheme.labelLarge,
     );
   }
 }

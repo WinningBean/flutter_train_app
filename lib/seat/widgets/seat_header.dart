@@ -11,23 +11,19 @@ class SeatHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        headerStation(departureStation),
+        headerStation(context, departureStation),
         Icon(Icons.arrow_circle_right_outlined, size: 30),
-        headerStation(arrivalStation),
+        headerStation(context, arrivalStation),
       ],
     );
   }
 
-  Widget headerStation(Station station) {
+  Widget headerStation(BuildContext context, Station station) {
     return Expanded(
       child: Center(
         child: Text(
           station.korean,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Colors.purple,
-            fontSize: 30,
-          ),
+          style: Theme.of(context).textTheme.displayMedium,
         ),
       ),
     );

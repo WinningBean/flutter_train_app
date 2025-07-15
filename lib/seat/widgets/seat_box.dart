@@ -7,7 +7,7 @@ class SeatBox extends StatelessWidget {
   final Color color;
 
   @protected
-  Color get boxColor => color;
+  Color getBoxColor(BuildContext context) => color;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class SeatBox extends StatelessWidget {
       height: size,
       width: size,
       decoration: BoxDecoration(
-        color: boxColor,
+        color: getBoxColor(context),
         borderRadius: BorderRadius.circular(8),
       ),
     );

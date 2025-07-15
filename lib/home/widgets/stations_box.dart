@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_train_app/constants/station.dart';
 import 'package:flutter_train_app/home/widgets/station_result.dart';
+import 'package:flutter_train_app/theme.dart';
 
 class StationsBox extends StatelessWidget {
   const StationsBox({
@@ -18,10 +19,12 @@ class StationsBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final customColors = Theme.of(context).extension<CustomColors>()!;
+
     return Container(
       height: 200,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: customColors.stationBoxColor,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Center(
@@ -36,7 +39,10 @@ class StationsBox extends StatelessWidget {
               SizedBox(
                 width: 2,
                 height: 50,
-                child: VerticalDivider(thickness: 2, color: Colors.grey[400]),
+                child: VerticalDivider(
+                  thickness: 2,
+                  color: Theme.of(context).dividerColor,
+                ),
               ),
               StationResult(
                 isDepartureStation: false,

@@ -34,7 +34,7 @@ class SeatListView extends StatelessWidget {
               ...rowSpaced([
                 for (int i = 0; i < SeatListView._seatRowSize; i++) ...[
                   if (i == (SeatListView._seatRowSize / 2).toInt())
-                    _seatColumnInfo(), // 가운데 부분에는 세로열 정보 출력
+                    _seatColumnInfo(context), // 가운데 부분에는 세로열 정보 출력
                   SeatColList(
                     rowIdx: i,
                     seatSize: SeatListView._seatSize,
@@ -53,7 +53,7 @@ class SeatListView extends StatelessWidget {
   }
 
   /// 세로열 정보 (숫자)
-  Widget _seatColumnInfo() {
+  Widget _seatColumnInfo(BuildContext context) {
     return Column(
       children: [
         ...columnSpaced([
@@ -63,7 +63,10 @@ class SeatListView extends StatelessWidget {
               height: SeatListView._seatSize,
               width: SeatListView._seatSize,
               alignment: Alignment.center,
-              child: Text(i.toString(), style: TextStyle(fontSize: 18)),
+              child: Text(
+                i.toString(),
+                style: Theme.of(context).textTheme.labelLarge,
+              ),
             ),
         ], SeatListView._columnPadding),
       ],
