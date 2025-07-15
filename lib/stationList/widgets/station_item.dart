@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class StationItem extends StatelessWidget {
-  StationItem(this.name, {super.key});
+  const StationItem(this.name, {super.key});
 
-  String name;
+  final String name;
 
   @override
   Widget build(BuildContext context) {

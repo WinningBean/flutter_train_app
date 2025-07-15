@@ -2,14 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_train_app/stationList/station_list_page.dart';
 
 class StationResult extends StatefulWidget {
-  const StationResult({
-    super.key,
-    required this.isDepartureStation,
-    required this.onChanged,
-  }) : stationRoute = isDepartureStation ? '출발역' : '도착역';
+  const StationResult(this.isDepartureStation, this.onChanged, {super.key});
 
   final bool isDepartureStation;
-  final String stationRoute;
   final ValueChanged<String?> onChanged;
 
   @override
@@ -17,7 +12,20 @@ class StationResult extends StatefulWidget {
 }
 
 class _StationResultState extends State<StationResult> {
-  String? stationName;
+  String? _stationName;
+  late final String _stationRoute;
+
+  @override
+  void initState() {
+    super.initState();
+    _stationRoute = widget.isDepartureStation ? '출발역' : '도착역';
+  }
+
+  void updateStationName(String? value) {
+    setState(() {
+      _stationName = value;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +33,7 @@ class _StationResultState extends State<StationResult> {
       child: Column(
         children: [
           Text(
-            widget.stationRoute,
+            _stationRoute,
             style: TextStyle(
               fontSize: 16,
               color: Colors.grey,
@@ -33,24 +41,24 @@ class _StationResultState extends State<StationResult> {
             ),
           ),
           GestureDetector(
-            onTap: () async {
-              String? choiceStationName = await Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return StationListPage(widget.stationRoute);
-                  },
-                ),
-              );
-              widget.onChanged(choiceStationName);
-              setState(() {
-                stationName = choiceStationName;
-              });
-            },
-            child: Text(stationName ?? '선택', style: TextStyle(fontSize: 40)),
+            onTap: _selectStation,
+            child: Text(_stationName ?? '선택', style: TextStyle(fontSize: 40)),
           ),
         ],
       ),
     );
+  }
+
+  Future<void> _selectStation() async {
+    final selectedStation = await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) {
+          return StationListPage(_stationRoute);
+        },
+      ),
+    );
+    updateStationName(selectedStation);
+    widget.onChanged(_stationName);
   }
 }

@@ -4,9 +4,8 @@ import 'package:flutter_train_app/stationList/widgets/station_item.dart';
 class StationListPage extends StatelessWidget {
   StationListPage(this.title, {super.key});
 
-  String title;
-
-  final List<String> stations = [
+  final String title;
+  final List<String> _stations = [
     "수서",
     "동탄",
     "평택지제",
@@ -25,7 +24,7 @@ class StationListPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(title)),
       body: Column(
-        children: [for (var station in stations) StationItem(station)],
+        children: [for (var station in _stations) StationItem(station)],
       ),
     );
   }

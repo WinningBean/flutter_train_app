@@ -23,19 +23,13 @@ class StationsBox extends StatelessWidget {
         child: IntrinsicHeight(
           child: Row(
             children: [
-              StationResult(
-                isDepartureStation: true,
-                onChanged: onDepartureChanged,
-              ),
+              StationResult(true, onDepartureChanged),
               SizedBox(
                 width: 2,
                 height: 50,
                 child: VerticalDivider(thickness: 2, color: Colors.grey[400]),
               ),
-              StationResult(
-                isDepartureStation: false,
-                onChanged: onArrivalChanged,
-              ),
+              StationResult(false, onArrivalChanged),
             ],
           ),
         ),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_train_app/seat/widgets/seat_box.dart';
 
-class SeatChoiceInfo extends StatelessWidget {
-  const SeatChoiceInfo({super.key});
+class SeatSelectInfo extends StatelessWidget {
+  const SeatSelectInfo({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class SeatChoiceInfo extends StatelessWidget {
           children: [
             SeatBox(24, Colors.grey[300]!),
             SizedBox(width: 4),
-            Text('선택안됨'),
+            Text('선택 안 됨'),
           ],
         ),
       ],

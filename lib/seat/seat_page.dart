@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_train_app/seat/widgets/seat_header.dart';
-import 'package:flutter_train_app/seat/widgets/seat_choice_info.dart';
+import 'package:flutter_train_app/seat/widgets/seat_select_info.dart';
 import 'package:flutter_train_app/seat/widgets/seat_list_view.dart';
 import 'package:flutter_train_app/widgets/main_button.dart';
 
@@ -20,7 +20,7 @@ class SeatPage extends StatelessWidget {
           children: [
             SeatHeader(departureStation, arrivalStation),
             SizedBox(height: 20),
-            SeatChoiceInfo(),
+            SeatSelectInfo(),
             SizedBox(height: 8),
             SeatListView(),
             MainButton('예매 하기', () {
