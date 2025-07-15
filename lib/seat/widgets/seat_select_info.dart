@@ -4,6 +4,8 @@ import 'package:flutter_train_app/seat/widgets/seat_box.dart';
 class SeatSelectInfo extends StatelessWidget {
   const SeatSelectInfo({super.key});
 
+  final double _seatSize = 24;
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -11,7 +13,7 @@ class SeatSelectInfo extends StatelessWidget {
       children: [
         Row(
           children: [
-            SeatBox(24, Colors.purple),
+            SeatBox(size: _seatSize, color: Colors.purple),
             SizedBox(width: 4),
             Text('선택됨'),
           ],
@@ -19,7 +21,7 @@ class SeatSelectInfo extends StatelessWidget {
         SizedBox(width: 20),
         Row(
           children: [
-            SeatBox(24, Colors.grey[300]!),
+            SeatBox(size: _seatSize, color: Colors.grey[300]!),
             SizedBox(width: 4),
             Text('선택 안 됨'),
           ],

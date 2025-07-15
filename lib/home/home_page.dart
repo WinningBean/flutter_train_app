@@ -14,18 +14,6 @@ class _HomePageState extends State<HomePage> {
   String? departureStation;
   String? arrivalStation;
 
-  void updateDeparture(String? value) {
-    setState(() {
-      departureStation = value;
-    });
-  }
-
-  void updateArrival(String? value) {
-    setState(() {
-      arrivalStation = value;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,9 +35,8 @@ class _HomePageState extends State<HomePage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) {
-                      return SeatPage(departureStation!, arrivalStation!);
-                    },
+                    builder: (_) =>
+                        SeatPage(departureStation!, arrivalStation!),
                   ),
                 );
               } else {
@@ -61,5 +48,17 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
+  }
+
+  void updateDeparture(String? value) {
+    setState(() {
+      departureStation = value;
+    });
+  }
+
+  void updateArrival(String? value) {
+    setState(() {
+      arrivalStation = value;
+    });
   }
 }

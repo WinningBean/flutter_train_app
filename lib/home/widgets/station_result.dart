@@ -21,12 +21,6 @@ class _StationResultState extends State<StationResult> {
     _stationRoute = widget.isDepartureStation ? '출발역' : '도착역';
   }
 
-  void updateStationName(String? value) {
-    setState(() {
-      _stationName = value;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -52,13 +46,15 @@ class _StationResultState extends State<StationResult> {
   Future<void> _selectStation() async {
     final selectedStation = await Navigator.push(
       context,
-      MaterialPageRoute(
-        builder: (context) {
-          return StationListPage(_stationRoute);
-        },
-      ),
+      MaterialPageRoute(builder: (_) => StationListPage(_stationRoute)),
     );
     updateStationName(selectedStation);
     widget.onChanged(_stationName);
+  }
+
+  void updateStationName(String? value) {
+    setState(() {
+      _stationName = value;
+    });
   }
 }

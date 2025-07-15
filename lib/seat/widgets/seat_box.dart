@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
 class SeatBox extends StatelessWidget {
-  SeatBox(this.size, this.color, {super.key});
+  const SeatBox({super.key, required this.size, required this.color});
 
   final double size;
-  Color color;
+  final Color color;
+
+  @protected
+  Color get boxColor => color;
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +15,7 @@ class SeatBox extends StatelessWidget {
       height: size,
       width: size,
       decoration: BoxDecoration(
-        color: color,
+        color: boxColor,
         borderRadius: BorderRadius.circular(8),
       ),
     );
