@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_train_app/constants/station.dart';
 import 'package:flutter_train_app/seat/seat_page.dart';
 import 'package:flutter_train_app/widgets/main_button.dart';
 import 'package:flutter_train_app/home/widgets/stations_box.dart';
@@ -11,8 +12,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String? departureStation;
-  String? arrivalStation;
+  Station? _departureStation;
+  Station? _arrivalStation;
 
   @override
   Widget build(BuildContext context) {
@@ -26,17 +27,19 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             StationsBox(
+              departureStation: _departureStation,
+              arrivalStation: _arrivalStation,
               onDepartureChanged: updateDeparture,
               onArrivalChanged: updateArrival,
             ),
             SizedBox(height: 20),
             MainButton('좌석 선택', () {
-              if (departureStation != null && arrivalStation != null) {
+              if (_departureStation != null && _arrivalStation != null) {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (_) =>
-                        SeatPage(departureStation!, arrivalStation!),
+                        SeatPage(_departureStation!, _arrivalStation!),
                   ),
                 );
               } else {
@@ -50,15 +53,15 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void updateDeparture(String? value) {
+  void updateDeparture(Station? value) {
     setState(() {
-      departureStation = value;
+      _departureStation = value;
     });
   }
 
-  void updateArrival(String? value) {
+  void updateArrival(Station? value) {
     setState(() {
-      arrivalStation = value;
+      _arrivalStation = value;
     });
   }
 }

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_train_app/constants/station.dart';
 
 class StationItem extends StatelessWidget {
-  const StationItem(this.name, {super.key});
+  const StationItem(this.station, {super.key});
 
-  final String name;
+  final Station station;
 
   @override
   Widget build(BuildContext context) {
@@ -16,10 +17,10 @@ class StationItem extends StatelessWidget {
       ),
       child: GestureDetector(
         onTap: () {
-          Navigator.pop(context, name);
+          Navigator.pop(context, station);
         },
         child: Text(
-          name,
+          station.korean,
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
       ),

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_train_app/constants/station.dart';
 import 'package:flutter_train_app/home/home_page.dart';
 import 'package:flutter_train_app/seat/models/seat_position.dart';
 import 'package:flutter_train_app/seat/widgets/seat_header.dart';
@@ -10,8 +11,8 @@ import 'package:flutter_train_app/widgets/main_button.dart';
 class SeatPage extends StatefulWidget {
   const SeatPage(this.departureStation, this.arrivalStation, {super.key});
 
-  final String departureStation;
-  final String arrivalStation;
+  final Station departureStation;
+  final Station arrivalStation;
 
   @override
   State<SeatPage> createState() => _SeatPageState();

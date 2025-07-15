@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_train_app/constants/station.dart';
 import 'package:flutter_train_app/stationList/station_list_page.dart';
 
 class StationResult extends StatefulWidget {
-  const StationResult(this.isDepartureStation, this.onChanged, {super.key});
+  const StationResult({
+    super.key,
+    required this.isDepartureStation,
+    required this.onChanged,
+    this.anotherRouteStation,
+  });
 
   final bool isDepartureStation;
-  final ValueChanged<String?> onChanged;
+  final ValueChanged<Station?> onChanged;
+  final Station? anotherRouteStation;
 
   @override
   State<StationResult> createState() => _StationResultState();
 }
 
 class _StationResultState extends State<StationResult> {
-  String? _stationName;
+  Station? _station;
   late final String _stationRoute;
 
   @override
@@ -36,7 +43,10 @@ class _StationResultState extends State<StationResult> {
           ),
           GestureDetector(
             onTap: _selectStation,
-            child: Text(_stationName ?? '선택', style: TextStyle(fontSize: 40)),
+            child: Text(
+              _station?.korean ?? '선택',
+              style: TextStyle(fontSize: 40),
+            ),
           ),
         ],
       ),
@@ -46,15 +56,20 @@ class _StationResultState extends State<StationResult> {
   Future<void> _selectStation() async {
     final selectedStation = await Navigator.push(
       context,
-      MaterialPageRoute(builder: (_) => StationListPage(_stationRoute)),
+      MaterialPageRoute(
+        builder: (_) => StationListPage(
+          title: _stationRoute,
+          anotherRouteStation: widget.anotherRouteStation,
+        ),
+      ),
     );
     updateStationName(selectedStation);
-    widget.onChanged(_stationName);
+    widget.onChanged(_station);
   }
 
-  void updateStationName(String? value) {
+  void updateStationName(Station? value) {
     setState(() {
-      _stationName = value;
+      _station = value;
     });
   }
 }
