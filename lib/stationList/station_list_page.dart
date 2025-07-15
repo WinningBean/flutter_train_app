@@ -18,8 +18,12 @@ class StationListPage extends StatelessWidget {
       appBar: AppBar(title: Text(title)),
       body: Column(
         children: Station.values
-            .where((station) => station != anotherRouteStation)
-            .map((station) => StationItem(station))
+            .map(
+              (station) => StationItem(
+                station: station,
+                canTap: station != anotherRouteStation,
+              ),
+            )
             .toList(),
       ),
     );
