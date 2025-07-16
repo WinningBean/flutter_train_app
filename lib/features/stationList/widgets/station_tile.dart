@@ -29,7 +29,7 @@ class StationTile extends StatelessWidget {
         ),
       ),
       child: Text(
-        station.korean,
+        station.localized(context),
         style: Theme.of(context).textTheme.bodyLarge?.copyWith(
           color: isDisabled ? customColors.disabledTextColor : null,
         ),

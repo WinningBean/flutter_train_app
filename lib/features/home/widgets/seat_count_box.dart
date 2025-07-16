@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_train_app/features/home/widgets/vertical_divider_box.dart';
+import 'package:flutter_train_app/l10n/app_localizations.dart';
 
 /// SeatCountBox 위젯
 /// 사용자가 예약할 좌석 수를 선택할 수 있는 박스
@@ -13,6 +14,8 @@ class SeatCountBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final local = AppLocalizations.of(context)!;
+
     return Center(
       child: IntrinsicHeight(
         child: Row(
@@ -20,7 +23,7 @@ class SeatCountBox extends StatelessWidget {
             Expanded(
               child: Center(
                 child: Text(
-                  '예약할 좌석 수',
+                  local.seatCountTitle,
                   style: Theme.of(context).textTheme.labelMedium,
                 ),
               ),

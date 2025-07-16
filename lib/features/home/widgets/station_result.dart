@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_train_app/core/constants/station.dart';
 import 'package:flutter_train_app/features/stationList/station_list_page.dart';
+import 'package:flutter_train_app/l10n/app_localizations.dart';
 
 /// StationResult 위젯
 /// 사용자가 출발역 또는 도착역을 선택할 수 있는 위젯
@@ -22,25 +23,33 @@ class StationResult extends StatefulWidget {
 
 class _StationResultState extends State<StationResult> {
   Station? _station;
-  late final String _stationRoute;
+  late String _stationRoute;
 
   @override
-  void initState() {
-    super.initState();
-    _stationRoute = widget.isDepartureStation ? '출발역' : '도착역';
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    final local = AppLocalizations.of(context)!;
+    _stationRoute = widget.isDepartureStation
+        ? local.departureStation
+        : local.arrivalStation;
   }
 
   @override
   Widget build(BuildContext context) {
+    final local = AppLocalizations.of(context)!;
+
     return Expanded(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(_stationRoute, style: Theme.of(context).textTheme.labelMedium),
           GestureDetector(
             onTap: _selectStation,
             child: Text(
-              _station?.korean ?? '선택',
+              _station?.localized(context) ?? local.selectStation,
               style: Theme.of(context).textTheme.displayLarge,
+              textAlign: TextAlign.center,
             ),
           ),
         ],

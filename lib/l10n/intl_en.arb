@@ -1,0 +1,47 @@
+{
+  "@@locale": "en",
+  "confirmText": "Confirm",
+  "cancelText": "Cancel",
+  "trainReservation": "Train Reservation",
+  "selectSeat": "Select Seat",
+  "selectStation": "Select",
+  "departureStation": "Departure",
+  "arrivalStation": "Arrival",
+  "seatCountTitle": "Seat Count",
+  "selectStationsWarning": "Please select both departure and arrival stations.",
+  "seatSelected": "Selected",
+  "seatUnselected": "Unselected",
+  "bookSeats": "Book Seats",
+  "selectSeatWarning": "Please select all {seatCount} seats.",
+  "@selectSeatWarning": {
+    "description": "Warns the user to select all required seats when not enough are selected.",
+    "placeholders": {
+      "seatCount": {
+        "type": "int",
+        "example": "3"
+      }
+    }
+  },
+  "confirmBookingTitle": "Would you like to book?",
+  "selectedSeatsLabel": "Seat Numbers\n{seats}",
+  "@selectedSeatsLabel": {
+    "description": "Displays the seat numbers selected by the user, separated by commas.",
+    "placeholders": {
+      "seats": {
+        "type": "String",
+        "example": "3-A\n4-B"
+      }
+    }
+  },
+  "stationSuseo": "Suseo",
+  "stationDongtan": "Dongtan",
+  "stationPyeongtaekJije": "Pyeongtaek-Jije",
+  "stationCheonanAsan": "Cheonan-Asan",
+  "stationOsong": "Osong",
+  "stationDaejeon": "Daejeon",
+  "stationGimcheonGumi": "Gimcheon-Gumi",
+  "stationDongdaegu": "Dongdaegu",
+  "stationGyeongju": "Gyeongju",
+  "stationUlsan": "Ulsan",
+  "stationBusan": "Busan"
+}

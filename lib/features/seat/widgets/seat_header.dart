@@ -25,8 +25,9 @@ class SeatHeader extends StatelessWidget {
     return Expanded(
       child: Center(
         child: Text(
-          station.korean,
+          station.localized(context),
           style: Theme.of(context).textTheme.displayMedium,
+          textAlign: TextAlign.center,
         ),
       ),
     );

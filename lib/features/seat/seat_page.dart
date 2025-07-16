@@ -9,6 +9,7 @@ import 'package:flutter_train_app/features/seat/widgets/seat_header.dart';
 import 'package:flutter_train_app/features/seat/widgets/seat_select_info.dart';
 import 'package:flutter_train_app/features/seat/widgets/seat_list_view.dart';
 import 'package:flutter_train_app/core/widgets/main_button.dart';
+import 'package:flutter_train_app/l10n/app_localizations.dart';
 
 /// SeatPage 위젯
 /// 좌석 선택 페이지를 구현
@@ -33,8 +34,10 @@ class _SeatPageState extends State<SeatPage> {
 
   @override
   Widget build(BuildContext context) {
+    final local = AppLocalizations.of(context)!;
+
     return Scaffold(
-      appBar: AppBar(title: Text('좌석 선택')),
+      appBar: AppBar(title: Text(local.selectSeat)),
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
@@ -48,14 +51,14 @@ class _SeatPageState extends State<SeatPage> {
               isSeatSeleted: _isSeatSeleted,
               onSeatTap: _toggleSeat,
             ),
-            MainButton('예매 하기', () {
+            MainButton(local.bookSeats, () {
               if (_isAllSelected) {
                 showCupertinoDialog(
                   context: context,
                   builder: (context) {
                     return ConfirmDialog(
-                      title: '예매 하시겠습니까?',
-                      content: '좌석 번호\n$_sortedSeatsText',
+                      title: local.confirmBookingTitle,
+                      content: local.selectedSeatsLabel(_sortedSeatsText),
                       onConfirm: () {
                         Navigator.of(context).pushAndRemoveUntil(
                           MaterialPageRoute(builder: (_) => HomePage()),
@@ -69,7 +72,7 @@ class _SeatPageState extends State<SeatPage> {
                 showCupertinoDialog(
                   context: context,
                   builder: (_) => InfoDialog(
-                    message: '${widget.reservationSeatCnt}인 좌석 모두 선택해 주세요.',
+                    message: local.selectSeatWarning(widget.reservationSeatCnt),
                   ),
                 );
               }

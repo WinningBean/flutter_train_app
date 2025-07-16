@@ -1,4 +1,7 @@
-/// 역 이름 상수
+import 'package:flutter/material.dart';
+import 'package:flutter_train_app/l10n/app_localizations.dart';
+
+/// 역 상수
 enum Station {
   suseo,
   dongtan,
@@ -13,33 +16,22 @@ enum Station {
   busan,
 }
 
-/// 역 이름 확장
-extension StationName on Station {
-  /// 한국어 이름 반환
-  String get korean {
-    switch (this) {
-      case Station.suseo:
-        return '수서';
-      case Station.dongtan:
-        return '동탄';
-      case Station.pyeongtaekJije:
-        return '평택지제';
-      case Station.cheonanAsan:
-        return '천안아산';
-      case Station.osong:
-        return '오송';
-      case Station.daejeon:
-        return '대전';
-      case Station.gimcheonGumi:
-        return '김천구미';
-      case Station.dongdaegu:
-        return '동대구';
-      case Station.gyeongju:
-        return '경주';
-      case Station.ulsan:
-        return '울산';
-      case Station.busan:
-        return '부산';
-    }
+/// 역 상수 확장
+extension StationNameLocalized on Station {
+  String localized(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    return switch (this) {
+      Station.suseo => l10n.stationSuseo,
+      Station.dongtan => l10n.stationDongtan,
+      Station.pyeongtaekJije => l10n.stationPyeongtaekJije,
+      Station.cheonanAsan => l10n.stationCheonanAsan,
+      Station.osong => l10n.stationOsong,
+      Station.daejeon => l10n.stationDaejeon,
+      Station.gimcheonGumi => l10n.stationGimcheonGumi,
+      Station.dongdaegu => l10n.stationDongdaegu,
+      Station.gyeongju => l10n.stationGyeongju,
+      Station.ulsan => l10n.stationUlsan,
+      Station.busan => l10n.stationBusan,
+    };
   }
 }

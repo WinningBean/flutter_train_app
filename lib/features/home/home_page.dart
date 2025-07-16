@@ -9,6 +9,7 @@ import 'package:flutter_train_app/features/home/widgets/seat_count_box.dart';
 import 'package:flutter_train_app/features/seat/seat_page.dart';
 import 'package:flutter_train_app/core/widgets/main_button.dart';
 import 'package:flutter_train_app/features/home/widgets/stations_box.dart';
+import 'package:flutter_train_app/l10n/app_localizations.dart';
 
 /// HomePage 위젯
 /// 기차 예매 홈 페이지를 구현
@@ -28,9 +29,10 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final customColors = Theme.of(context).extension<CustomColors>()!;
+    final local = AppLocalizations.of(context)!;
 
     return Scaffold(
-      appBar: AppBar(title: Text('기차 예매')),
+      appBar: AppBar(title: Text(local.trainReservation)),
       backgroundColor: customColors.homePageBackgroundColor,
       body: Padding(
         padding: const EdgeInsets.all(20),
@@ -48,7 +50,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               BoxContainer(100, SeatCountBox(_updateReservationSeatCnt)),
-              MainButton('좌석 선택', _handleSeatSelection),
+              MainButton(local.selectSeat, _handleSeatSelection),
             ], 20),
           ],
         ),
@@ -75,7 +77,9 @@ class _HomePageState extends State<HomePage> {
     } else {
       showCupertinoDialog(
         context: context,
-        builder: (_) => InfoDialog(message: '출발역과 도착역을 모두 선택해 주세요.'),
+        builder: (_) => InfoDialog(
+          message: AppLocalizations.of(context)!.selectStationsWarning,
+        ),
       );
     }
   }
