@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
+//// ConfirmDialog 위젯
+/// 사용자가 확인 또는 취소 작업을 수행할 수 있는 dialog
 class ConfirmDialog extends StatelessWidget {
   const ConfirmDialog({
     super.key,

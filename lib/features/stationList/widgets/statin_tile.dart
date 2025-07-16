@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_train_app/core/constants/station.dart';
 import 'package:flutter_train_app/core/theme/custom_colors.dart';
 
+/// StationTile 위젯
+/// 역 정보를 표시하는 타일 위젯
 class StationTile extends StatelessWidget {
   const StationTile({
     super.key,

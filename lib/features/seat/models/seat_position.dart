@@ -1,3 +1,4 @@
+/// 좌석 위치를 나타내는 모델 클래스
 class SeatPosition implements Comparable<SeatPosition> {
   const SeatPosition(this.row, this.col);
 

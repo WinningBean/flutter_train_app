@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_train_app/core/constants/station.dart';
 import 'package:flutter_train_app/features/stationList/widgets/selectable_station_tile.dart';
 
+/// StationListPage 위젯
+/// 역 목록을 표시하는 페이지 위젯
 class StationListPage extends StatelessWidget {
   const StationListPage({
     super.key,

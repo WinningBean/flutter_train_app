@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
+/// InfoDialog 위젯
+/// 사용자가 정보를 확인할 수 있는 dialog
 class InfoDialog extends StatelessWidget {
   final String message;
   final String buttonText;

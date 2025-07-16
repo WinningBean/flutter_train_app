@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+/// 버튼 테마 정의
+
+/// FilledButton 테마
 final FilledButtonThemeData filledButtonTheme = FilledButtonThemeData(
   style: FilledButton.styleFrom(
     backgroundColor: Colors.purple,

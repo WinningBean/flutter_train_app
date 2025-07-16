@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// train app Custom Colors
 @immutable
 class CustomColors extends ThemeExtension<CustomColors> {
   final Color homePageBackgroundColor;

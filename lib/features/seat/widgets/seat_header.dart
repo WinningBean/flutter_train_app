@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_train_app/core/constants/station.dart';
 
+/// SeatHeader 위젯
+/// 좌석 예약 화면의 상단에 출발역과 도착역을 표시하는 헤더 위젯
 class SeatHeader extends StatelessWidget {
   const SeatHeader(this.departureStation, this.arrivalStation, {super.key});
 
@@ -18,6 +20,7 @@ class SeatHeader extends StatelessWidget {
     );
   }
 
+  /// 출발역 또는 도착역을 표시하는 위젯 생성
   Widget _buildHeaderStation(BuildContext context, Station station) {
     return Expanded(
       child: Center(

@@ -9,6 +9,9 @@ import 'package:flutter_train_app/features/seat/seat_page.dart';
 import 'package:flutter_train_app/core/widgets/main_button.dart';
 import 'package:flutter_train_app/features/home/widgets/stations_box.dart';
 
+/// HomePage 위젯
+/// 기차 예매 홈 페이지를 구현
+/// 사용자가 출발역과 도착역을 선택하고, 예약할 좌석 수를 선택할 수 있는 UI 제공
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -52,6 +55,10 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  /// 좌석 선택 버튼 클릭 시 호출되는 메서드
+  /// 출발역과 도착역이 모두 선택되었는지 확인하고,
+  /// 선택되었다면 SeatPage로 이동하여 좌석 선택을 진행
+  /// 선택되지 않았다면 정보 다이얼로그를 표시
   void _handleSeatSelection() {
     if (_departureStation != null && _arrivalStation != null) {
       Navigator.push(
@@ -72,16 +79,19 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  /// 예약할 좌석 수를 업데이트하는 메서드
   void _updateReservationSeatCnt(int value) {
     _reservationSeatCnt = value;
   }
 
+  /// 출발역을 업데이트하는 메서드
   void _updateDeparture(Station? value) {
     setState(() {
       _departureStation = value;
     });
   }
 
+  /// 도착역을 업데이트하는 메서드
   void _updateArrival(Station? value) {
     setState(() {
       _arrivalStation = value;

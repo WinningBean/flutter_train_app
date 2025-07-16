@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_train_app/core/constants/station.dart';
 import 'package:flutter_train_app/features/stationList/station_list_page.dart';
 
+/// StationResult 위젯
+/// 사용자가 출발역 또는 도착역을 선택할 수 있는 위젯
 class StationResult extends StatefulWidget {
   const StationResult({
     super.key,
@@ -46,6 +48,8 @@ class _StationResultState extends State<StationResult> {
     );
   }
 
+  /// 역 선택을 위한 페이지로 이동
+  /// StationListPage로부터 선택된 역을 반환
   Future<void> _selectStation() async {
     final selectedStation = await Navigator.push(
       context,
@@ -60,6 +64,7 @@ class _StationResultState extends State<StationResult> {
     widget.onChanged(_station);
   }
 
+  /// 역을 업데이트하는 메서드
   void _updateStationName(Station? value) {
     setState(() {
       _station = value;

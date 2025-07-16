@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_train_app/core/constants/station.dart';
 import 'package:flutter_train_app/features/home/widgets/station_result.dart';
 
+/// StationsBox 위젯
+/// 사용자가 출발역과 도착역을 선택할 수 있는 박스
 class StationsBox extends StatelessWidget {
   const StationsBox({
     super.key,

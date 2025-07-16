@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+/// 좌석 박스 위젯
+/// 좌석의 크기와 색상을 지정할 수 있는 박스 위젯
 class SeatBox extends StatelessWidget {
   const SeatBox({super.key, required this.size, required this.color});
 

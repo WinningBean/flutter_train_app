@@ -1,3 +1,4 @@
+/// 역 이름 상수
 enum Station {
   suseo,
   dongtan,
@@ -12,7 +13,9 @@ enum Station {
   busan,
 }
 
+/// 역 이름 확장
 extension StationName on Station {
+  /// 한국어 이름 반환
   String get korean {
     switch (this) {
       case Station.suseo:

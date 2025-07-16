@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+/// SeatCountBox 위젯
+/// 사용자가 예약할 좌석 수를 선택할 수 있는 박스
 class SeatCountBox extends StatelessWidget {
   const SeatCountBox(this.onNumChanged, {super.key});
 

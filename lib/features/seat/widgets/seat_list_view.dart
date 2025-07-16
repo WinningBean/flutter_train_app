@@ -3,6 +3,8 @@ import 'package:flutter_train_app/core/helpers/ui_helpers.dart';
 import 'package:flutter_train_app/features/seat/models/seat_position.dart';
 import 'package:flutter_train_app/features/seat/widgets/seat_col_list.dart';
 
+/// 좌석 리스트 뷰 위젯
+/// 좌석의 행(row)과 열(column)을 표시하며, 좌석 선택 기능을 제공
 class SeatListView extends StatelessWidget {
   const SeatListView({
     super.key,
@@ -52,7 +54,7 @@ class SeatListView extends StatelessWidget {
     );
   }
 
-  /// 세로열 정보 (숫자)
+  /// 좌석 열(column) 정보 위젯 생성 (숫자)
   Widget _buildSeatColumnInfo(BuildContext context) {
     return Column(
       children: [

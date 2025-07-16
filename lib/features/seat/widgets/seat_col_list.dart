@@ -3,6 +3,8 @@ import 'package:flutter_train_app/core/helpers/ui_helpers.dart';
 import 'package:flutter_train_app/features/seat/models/seat_position.dart';
 import 'package:flutter_train_app/features/seat/widgets/action_seat_box.dart';
 
+/// 좌석 열 리스트 위젯
+/// 좌석의 행(row) 정보를 표시하고, 각 좌석 박스를 포함하는 열
 class SeatColList extends StatelessWidget {
   const SeatColList({
     super.key,
@@ -33,7 +35,7 @@ class SeatColList extends StatelessWidget {
     );
   }
 
-  /// 좌석 박스
+  /// 좌석 박스 리스트 생성
   List<Widget> _buildSeatBoxs(BuildContext context, int rowIdx) {
     return [
       for (int colIdx = 0; colIdx < seatColumnSize; colIdx++)
@@ -50,7 +52,7 @@ class SeatColList extends StatelessWidget {
     ];
   }
 
-  /// 가로행 정보 (알파벳)
+  /// 좌석 행(row) 정보 위젯 생성 (알파벳)
   Widget _buildSeatRowInfo(BuildContext context, int rowIdx) {
     return Text(
       String.fromCharCode(
