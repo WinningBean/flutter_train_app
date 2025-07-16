@@ -81,7 +81,7 @@ lib/
 │       ├── station_list_page.dart    # 출발/도착역 선택 페이지
 │       └── widgets/
 │           ├── selectable_station_tile.dart  # 선택 가능한 역 타일
-│           └── statin_tile.dart              # 역 정보 타일
+│           └── station_tile.dart              # 역 정보 타일
 ```
 
 ---
