@@ -86,7 +86,7 @@ lib/
 
 ---
 
-## 🧰 사용 기술 스택 요약
+## 🧰 기술 스택
 
 - **개발 언어:** [Dart](https://dart.dev/)
 - **프레임워크:** [Flutter](https://flutter.dev/) 3.32+
@@ -117,3 +117,19 @@ lib/
 4. 좌석 선택 완료 → 예약 완료 처리
    - 선택된 좌석 목록 확인
    - 예약 완료 시 홈 화면으로 이동
+
+---
+
+## 📸 스크린샷 미리보기
+
+### 🌞 Light Mode
+
+| ![light_1](example/images/light_1.png) | ![light_2](example/images/light_2.png) | ![light_3](example/images/light_3.png) |
+| :------------------------------------: | :------------------------------------: | :------------------------------------: |
+| ![light_4](example/images/light_4.png) | ![light_5](example/images/light_5.png) | ![light_6](example/images/light_6.png) |
+
+### 🌙 Dark Mode
+
+| ![dark_1](example/images/dark_1.png) | ![dark_2](example/images/dark_2.png) | ![dark_3](example/images/dark_3.png) |
+| :----------------------------------: | :----------------------------------: | :----------------------------------: |
+| ![dark_4](example/images/dark_4.png) | ![dark_5](example/images/dark_5.png) | ![dark_6](example/images/dark_6.png) |
