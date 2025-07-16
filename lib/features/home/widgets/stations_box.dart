@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_train_app/constants/station.dart';
-import 'package:flutter_train_app/home/widgets/station_result.dart';
+import 'package:flutter_train_app/core/constants/station.dart';
+import 'package:flutter_train_app/features/home/widgets/station_result.dart';
 
 class StationsBox extends StatelessWidget {
   const StationsBox({

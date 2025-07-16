@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_train_app/constants/station.dart';
-import 'package:flutter_train_app/stationList/station_list_page.dart';
+import 'package:flutter_train_app/core/constants/station.dart';
+import 'package:flutter_train_app/features/stationList/station_list_page.dart';
 
 class StationResult extends StatefulWidget {
   const StationResult({
@@ -56,11 +56,11 @@ class _StationResultState extends State<StationResult> {
         ),
       ),
     );
-    updateStationName(selectedStation);
+    _updateStationName(selectedStation);
     widget.onChanged(_station);
   }
 
-  void updateStationName(Station? value) {
+  void _updateStationName(Station? value) {
     setState(() {
       _station = value;
     });

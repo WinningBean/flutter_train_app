@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_train_app/constants/station.dart';
-import 'package:flutter_train_app/stationList/widgets/station_item.dart';
+import 'package:flutter_train_app/core/constants/station.dart';
+import 'package:flutter_train_app/features/stationList/widgets/selectable_station_tile.dart';
 
 class StationListPage extends StatelessWidget {
   const StationListPage({
@@ -19,7 +19,7 @@ class StationListPage extends StatelessWidget {
       body: Column(
         children: Station.values
             .map(
-              (station) => StationItem(
+              (station) => SelectableStationTile(
                 station: station,
                 canTap: station != anotherRouteStation,
               ),

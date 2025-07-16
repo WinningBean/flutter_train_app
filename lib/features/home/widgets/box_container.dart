@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_train_app/theme.dart';
+import 'package:flutter_train_app/core/theme/custom_colors.dart';
 
 class BoxContainer extends StatelessWidget {
   const BoxContainer(this.height, this.childWidget, {super.key});

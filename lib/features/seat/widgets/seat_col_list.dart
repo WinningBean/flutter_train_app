@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_train_app/helpers/ui_helpers.dart';
-import 'package:flutter_train_app/seat/models/seat_position.dart';
-import 'package:flutter_train_app/seat/widgets/action_seat_box.dart';
+import 'package:flutter_train_app/core/helpers/ui_helpers.dart';
+import 'package:flutter_train_app/features/seat/models/seat_position.dart';
+import 'package:flutter_train_app/features/seat/widgets/action_seat_box.dart';
 
 class SeatColList extends StatelessWidget {
   const SeatColList({
@@ -25,16 +25,16 @@ class SeatColList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        ...columnSpaced([
-          _seatRowInfo(context, rowIdx),
-          ..._seatBoxs(context, rowIdx),
+        ...buildColumnSpaced([
+          _buildSeatRowInfo(context, rowIdx),
+          ..._buildSeatBoxs(context, rowIdx),
         ], columnPadding),
       ],
     );
   }
 
   /// 좌석 박스
-  List<Widget> _seatBoxs(BuildContext context, int rowIdx) {
+  List<Widget> _buildSeatBoxs(BuildContext context, int rowIdx) {
     return [
       for (int colIdx = 0; colIdx < seatColumnSize; colIdx++)
         () {
@@ -51,7 +51,7 @@ class SeatColList extends StatelessWidget {
   }
 
   /// 가로행 정보 (알파벳)
-  Widget _seatRowInfo(BuildContext context, int rowIdx) {
+  Widget _buildSeatRowInfo(BuildContext context, int rowIdx) {
     return Text(
       String.fromCharCode(
         SeatPosition.seatRowStartAlphabet.codeUnitAt(0) + rowIdx,

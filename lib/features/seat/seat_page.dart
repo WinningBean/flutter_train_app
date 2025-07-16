@@ -1,12 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_train_app/constants/station.dart';
-import 'package:flutter_train_app/home/home_page.dart';
-import 'package:flutter_train_app/seat/models/seat_position.dart';
-import 'package:flutter_train_app/seat/widgets/seat_header.dart';
-import 'package:flutter_train_app/seat/widgets/seat_select_info.dart';
-import 'package:flutter_train_app/seat/widgets/seat_list_view.dart';
-import 'package:flutter_train_app/widgets/main_button.dart';
+import 'package:flutter_train_app/core/constants/station.dart';
+import 'package:flutter_train_app/core/widgets/dialogs/confirm_dialog.dart';
+import 'package:flutter_train_app/core/widgets/dialogs/info_dialog.dart';
+import 'package:flutter_train_app/features/home/home_page.dart';
+import 'package:flutter_train_app/features/seat/models/seat_position.dart';
+import 'package:flutter_train_app/features/seat/widgets/seat_header.dart';
+import 'package:flutter_train_app/features/seat/widgets/seat_select_info.dart';
+import 'package:flutter_train_app/features/seat/widgets/seat_list_view.dart';
+import 'package:flutter_train_app/core/widgets/main_button.dart';
 
 class SeatPage extends StatefulWidget {
   const SeatPage({
@@ -49,22 +51,23 @@ class _SeatPageState extends State<SeatPage> {
                 showCupertinoDialog(
                   context: context,
                   builder: (context) {
-                    return _reservationDialog(context);
+                    return ConfirmDialog(
+                      title: '예매 하시겠습니까?',
+                      content: '좌석 번호\n$_sortedSeatsText',
+                      onConfirm: () {
+                        Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(builder: (_) => HomePage()),
+                          (route) => false,
+                        );
+                      },
+                    );
                   },
                 );
               } else {
                 showCupertinoDialog(
                   context: context,
-                  builder: (_) => CupertinoAlertDialog(
-                    content: Text(
-                      '${widget.reservationSeatCnt}인 좌석 모두 선택해 주세요.',
-                    ),
-                    actions: [
-                      CupertinoDialogAction(
-                        child: Text('확인'),
-                        onPressed: () => Navigator.pop(context),
-                      ),
-                    ],
+                  builder: (_) => InfoDialog(
+                    message: '${widget.reservationSeatCnt}인 좌석 모두 선택해 주세요.',
                   ),
                 );
               }
@@ -76,34 +79,9 @@ class _SeatPageState extends State<SeatPage> {
     );
   }
 
-  Widget _reservationDialog(BuildContext context) {
-    return CupertinoAlertDialog(
-      title: Text('예매 하시겠습니까?'),
-      content: Text('좌석 번호\n$sortedSeatsText'),
-      actions: [
-        CupertinoDialogAction(
-          isDestructiveAction: true,
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          child: Text('취소'),
-        ),
-        CupertinoDialogAction(
-          isDefaultAction: true,
-          onPressed: () {
-            Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(builder: (_) => HomePage()),
-              (route) => false,
-            );
-          },
-          child: Text('확인'),
-        ),
-      ],
-    );
-  }
-
-  String get sortedSeatsText =>
+  String get _sortedSeatsText =>
       (_selectedSeats.toList()..sort()).map((e) => e.toString()).join('\n');
+  bool get _isAllSelected => widget.reservationSeatCnt == _selectedSeats.length;
 
   bool _isSeatSeleted(SeatPosition seatPosition) {
     return _selectedSeats.contains(seatPosition);
@@ -120,6 +98,4 @@ class _SeatPageState extends State<SeatPage> {
       }
     });
   }
-
-  bool get _isAllSelected => widget.reservationSeatCnt == _selectedSeats.length;
 }

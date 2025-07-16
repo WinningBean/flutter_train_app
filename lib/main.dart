@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_train_app/home/home_page.dart';
-import 'package:flutter_train_app/theme.dart';
+import 'package:flutter_train_app/features/home/home_page.dart';
+import 'package:flutter_train_app/core/theme/theme.dart';
 
 void main() {
   runApp(const MyApp());

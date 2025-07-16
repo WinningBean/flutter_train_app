@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_train_app/constants/station.dart';
+import 'package:flutter_train_app/core/constants/station.dart';
 
 class SeatHeader extends StatelessWidget {
   const SeatHeader(this.departureStation, this.arrivalStation, {super.key});
@@ -11,14 +11,14 @@ class SeatHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        headerStation(context, departureStation),
+        _buildHeaderStation(context, departureStation),
         Icon(Icons.arrow_circle_right_outlined, size: 30),
-        headerStation(context, arrivalStation),
+        _buildHeaderStation(context, arrivalStation),
       ],
     );
   }
 
-  Widget headerStation(BuildContext context, Station station) {
+  Widget _buildHeaderStation(BuildContext context, Station station) {
     return Expanded(
       child: Center(
         child: Text(

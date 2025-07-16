@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_train_app/helpers/ui_helpers.dart';
-import 'package:flutter_train_app/seat/models/seat_position.dart';
-import 'package:flutter_train_app/seat/widgets/seat_col_list.dart';
+import 'package:flutter_train_app/core/helpers/ui_helpers.dart';
+import 'package:flutter_train_app/features/seat/models/seat_position.dart';
+import 'package:flutter_train_app/features/seat/widgets/seat_col_list.dart';
 
 class SeatListView extends StatelessWidget {
   const SeatListView({
@@ -31,10 +31,10 @@ class SeatListView extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ...rowSpaced([
+              ...buildRowSpaced([
                 for (int i = 0; i < SeatListView._seatRowSize; i++) ...[
                   if (i == (SeatListView._seatRowSize / 2).toInt())
-                    _seatColumnInfo(context), // 가운데 부분에는 세로열 정보 출력
+                    _buildSeatColumnInfo(context), // 가운데 부분에는 세로열 정보 출력
                   SeatColList(
                     rowIdx: i,
                     seatSize: SeatListView._seatSize,
@@ -53,10 +53,10 @@ class SeatListView extends StatelessWidget {
   }
 
   /// 세로열 정보 (숫자)
-  Widget _seatColumnInfo(BuildContext context) {
+  Widget _buildSeatColumnInfo(BuildContext context) {
     return Column(
       children: [
-        ...columnSpaced([
+        ...buildColumnSpaced([
           Text(' '), // HACK: 알파벳과 높이 맞추기 위해 일단 구현한 방법. 나중에 다른 방법 찾아보기
           for (int i = 1; i <= SeatListView._seatColumnSize; i++)
             Container(

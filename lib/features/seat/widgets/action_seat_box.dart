@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_train_app/seat/models/seat_position.dart';
-import 'package:flutter_train_app/seat/widgets/seat_box.dart';
+import 'package:flutter_train_app/features/seat/models/seat_position.dart';
+import 'package:flutter_train_app/features/seat/widgets/seat_box.dart';
 
 class ActionSeatBox extends SeatBox {
   const ActionSeatBox({
