@@ -1,5 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_train_app/constants/station.dart';
+import 'package:flutter_train_app/home/widgets/box_container.dart';
+import 'package:flutter_train_app/home/widgets/seat_count_box.dart';
 import 'package:flutter_train_app/seat/seat_page.dart';
 import 'package:flutter_train_app/theme.dart';
 import 'package:flutter_train_app/widgets/main_button.dart';
@@ -13,6 +16,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int _reservationSeatCnt = 1;
   Station? _departureStation;
   Station? _arrivalStation;
 
@@ -28,31 +32,53 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            StationsBox(
-              departureStation: _departureStation,
-              arrivalStation: _arrivalStation,
-              onDepartureChanged: updateDeparture,
-              onArrivalChanged: updateArrival,
+            BoxContainer(
+              200,
+              StationsBox(
+                departureStation: _departureStation,
+                arrivalStation: _arrivalStation,
+                onDepartureChanged: updateDeparture,
+                onArrivalChanged: updateArrival,
+              ),
             ),
+            SizedBox(height: 20),
+            BoxContainer(100, SeatCountBox(updateReservationSeatCnt)),
             SizedBox(height: 20),
             MainButton('좌석 선택', () {
               if (_departureStation != null && _arrivalStation != null) {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (_) =>
-                        SeatPage(_departureStation!, _arrivalStation!),
+                    builder: (_) => SeatPage(
+                      reservationSeatCnt: _reservationSeatCnt,
+                      departureStation: _departureStation!,
+                      arrivalStation: _arrivalStation!,
+                    ),
                   ),
                 );
               } else {
-                print('미선택');
-                // TODO: 미선택 시 화면 구현
+                showCupertinoDialog(
+                  context: context,
+                  builder: (_) => CupertinoAlertDialog(
+                    content: Text('출발역과 도착역을 모두 선택해 주세요.'),
+                    actions: [
+                      CupertinoDialogAction(
+                        child: Text('확인'),
+                        onPressed: () => Navigator.pop(context),
+                      ),
+                    ],
+                  ),
+                );
               }
             }),
           ],
         ),
       ),
     );
+  }
+
+  void updateReservationSeatCnt(int value) {
+    _reservationSeatCnt = value;
   }
 
   void updateDeparture(Station? value) {

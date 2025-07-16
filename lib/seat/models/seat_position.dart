@@ -1,4 +1,4 @@
-class SeatPosition {
+class SeatPosition implements Comparable<SeatPosition> {
   const SeatPosition(this.row, this.col);
 
   final int row;
@@ -20,5 +20,14 @@ class SeatPosition {
   @override
   String toString() {
     return '${seatColStartNum + col}-${String.fromCharCode(seatRowStartAlphabet.codeUnitAt(0) + row)}';
+  }
+
+  @override
+  int compareTo(SeatPosition other) {
+    if (col != other.col) {
+      return col.compareTo(other.col);
+    } else {
+      return row.compareTo(other.row);
+    }
   }
 }
