@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_train_app/core/constants/station.dart';
 import 'package:flutter_train_app/features/home/widgets/station_result.dart';
+import 'package:flutter_train_app/features/home/widgets/vertical_divider_box.dart';
 
 /// StationsBox 위젯
 /// 사용자가 출발역과 도착역을 선택할 수 있는 박스
@@ -29,14 +30,7 @@ class StationsBox extends StatelessWidget {
               onChanged: onDepartureChanged,
               anotherRouteStation: arrivalStation,
             ),
-            SizedBox(
-              width: 2,
-              height: 50,
-              child: VerticalDivider(
-                thickness: 2,
-                color: Theme.of(context).dividerColor,
-              ),
-            ),
+            VerticalDividerBox(),
             StationResult(
               isDepartureStation: false,
               onChanged: onArrivalChanged,

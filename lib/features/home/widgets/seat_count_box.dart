@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_train_app/features/home/widgets/vertical_divider_box.dart';
 
 /// SeatCountBox 위젯
 /// 사용자가 예약할 좌석 수를 선택할 수 있는 박스
@@ -24,14 +25,7 @@ class SeatCountBox extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
-              width: 2,
-              height: 50,
-              child: VerticalDivider(
-                thickness: 2,
-                color: Theme.of(context).dividerColor,
-              ),
-            ),
+            VerticalDividerBox(),
             Expanded(
               child: CupertinoPicker(
                 itemExtent: 50,

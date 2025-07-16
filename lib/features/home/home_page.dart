@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_train_app/core/constants/station.dart';
+import 'package:flutter_train_app/core/helpers/ui_helpers.dart';
 import 'package:flutter_train_app/core/theme/custom_colors.dart';
 import 'package:flutter_train_app/core/widgets/dialogs/info_dialog.dart';
 import 'package:flutter_train_app/features/home/widgets/box_container.dart';
@@ -36,19 +37,19 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            BoxContainer(
-              200,
-              StationsBox(
-                departureStation: _departureStation,
-                arrivalStation: _arrivalStation,
-                onDepartureChanged: _updateDeparture,
-                onArrivalChanged: _updateArrival,
+            ...buildColumnSpaced([
+              BoxContainer(
+                200,
+                StationsBox(
+                  departureStation: _departureStation,
+                  arrivalStation: _arrivalStation,
+                  onDepartureChanged: _updateDeparture,
+                  onArrivalChanged: _updateArrival,
+                ),
               ),
-            ),
-            SizedBox(height: 20),
-            BoxContainer(100, SeatCountBox(_updateReservationSeatCnt)),
-            SizedBox(height: 20),
-            MainButton('좌석 선택', _handleSeatSelection),
+              BoxContainer(100, SeatCountBox(_updateReservationSeatCnt)),
+              MainButton('좌석 선택', _handleSeatSelection),
+            ], 20),
           ],
         ),
       ),

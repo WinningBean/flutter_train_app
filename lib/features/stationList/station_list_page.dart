@@ -18,7 +18,7 @@ class StationListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(title)),
-      body: Column(
+      body: ListView(
         children: Station.values
             .map(
               (station) => SelectableStationTile(
