@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_train_app/core/constants/station.dart';
-import 'package:flutter_train_app/features/stationList/widgets/statin_tile.dart';
+import 'package:flutter_train_app/features/stationList/widgets/station_tile.dart';
 
 /// SelectableStationTile 위젯
 /// 선택 가능한 역 정보를 표시하는 타일 위젯
